@@ -1,5 +1,7 @@
 # sie-react-demo 说明
 
+> A React project
+
 ### 本项目为作者自己构建的与所在公司所使用的初始化项目模板，项目集成和配置的内容如下：
 -------------------------------------------------
 >
@@ -19,3 +21,18 @@
 >
 > react-swipe swipe-js-iso 加入了轮播图
 > 
+
+## Build Setup
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:3000
+npm run start
+
+# build for production with minification
+npm run build
+
+# run all tests
+npm test
+```
