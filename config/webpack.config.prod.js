@@ -344,4 +344,7 @@ module.exports = {
     tls: 'empty',
     child_process: 'empty',
   },
+  externals: {
+
+  },
 };
