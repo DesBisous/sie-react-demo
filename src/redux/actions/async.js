@@ -6,7 +6,8 @@ export const getWelfare = () => {
     return ( dispatch, getState ) => {
         // 开启loading
         dispatch(toast.show('loading...'));
-        get('/福利/10/2')
+        let page =  Math.round( Math.random() * 10 + 1 );
+        get( '/福利/10/' + page )
             .then(res => {
                 dispatch({
                     type: actionTypes.ASYNC_WELFARE_SUCCESS,
@@ -24,7 +25,7 @@ export const getWelfare = () => {
                 });
                 // 错误
                 setTimeout(
-                    ()=> dispatch(err({ status: true, msg: JSON.stringify(err) })),
+                    () => dispatch(toast._error({ status: true, msg: JSON.stringify(err) })),
                     500
                 )
             })

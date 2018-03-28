@@ -265,6 +265,6 @@ module.exports = {
     hints: false,
   },
   externals: {
-
+      "cordova": "cordova"
   },
 };

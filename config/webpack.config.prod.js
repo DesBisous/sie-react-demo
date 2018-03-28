@@ -345,6 +345,6 @@ module.exports = {
     child_process: 'empty',
   },
   externals: {
-
+      "cordova": "cordova"
   },
 };

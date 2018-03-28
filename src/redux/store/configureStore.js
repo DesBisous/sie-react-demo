@@ -9,16 +9,18 @@ const logger = createLogger({
 
 // middleware
 const middleware = [ thunk ];
+const dev = process.env.NODE_ENV === 'development' ? true : false;
 
-let dev = process.env.NODE_ENV === 'development' ? true : false;
+let _applyMiddleware = applyMiddleware( ...middleware );
 if ( dev ) {
     middleware.push( logger );
+    _applyMiddleware = compose( applyMiddleware( ...middleware ), window.devToolsExtension ? window.devToolsExtension() : undefined );
 }
 
 export default function configureStore(initialState) {
     const store = createStore( rootReducer, initialState,
         // middleware and redux-devtools
-        compose( applyMiddleware( ...middleware ), window.devToolsExtension ? window.devToolsExtension() : undefined )
+        _applyMiddleware
     );
     return store
 }

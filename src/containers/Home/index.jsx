@@ -1,90 +1,59 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import * as userAction from "../../redux/actions/user";
-import * as toastAction from "../../redux/actions/toast";
-import * as asyncAction from "../../redux/actions/async";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import get from "../../api/get";
+import Nav from '../../components/Nav'
+import wpt from "../../utils/wpt";
+import ReactSwipe from "react-swipe";
+import {Button, WhiteSpace, WingBlank} from "antd-mobile";
 
 class Home extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-        this.state = {
-            list : []
-        }
     }
-    componentDidMount() {
-        // redux 的使用
-        this.props.userActions.update({name: 'Benson'});
-        // 普通 get 请求
-        // this.getImage();
-        // asyncAction 方式请求
-        this.getAsyncWelfare();
-    }
-    // 在接收到新的props时，会调用这个方法。
-    componentWillReceiveProps() {
 
-    }
+    back = () => {
+        if( window.cordova ) {
+            wpt.closeApp(
+                (msg) => {},
+                (e) => {}
+            );
+        }else {
+            this.props.history.goBack();
+        }
+    };
+
+    navRightBtn = () => {
+        this.props.history.push('/girl');
+    };
+
+    scanCodeReturnStr = () => {
+        wpt.scanCodeReturnStr(
+            (msg) => {alert(msg);},
+            (e) => {alert("Error: " + e);}
+        );
+    };
+
     render() {
+        const opt = {
+            auto: 2500,
+            callback: (index) => {
+                // 更新当前轮播图的index
+            }
+        };
         return (
             <div>
-                <h1>{ JSON.stringify(this.props.match) }</h1>
-                <ul>
-                    {
-                        this.state.list.length > 0 ?
-                            this.state.list.map( (item, index) => {
-                                return <li key={index} style={{float: 'left'}}><img style={{width: '200px'}} src={item.url} alt=""/></li>
-                            } ) :
-                            this.props.async.list.map( (item, index) => {
-                                return <li key={index} style={{float: 'left'}}><img style={{width: '200px'}} src={item.url} alt=""/></li>
-                            } )
-                    }
-                </ul>
+                <Nav back={this.back} navRightBtn={this.navRightBtn}></Nav>
+                <ReactSwipe swipeOptions={opt}>
+                    <div><img src="http://pic1.win4000.com/wallpaper/2/591be819a33ed.jpg" alt="" style={{width: '100%'}}/></div>
+                    <div><img src="http://www.runningman-fan.com/wp-content/uploads/2015/10/Img0403_20151002165101_1.jpg" alt="" style={{width: '100%'}}/></div>
+                    <div><img src="http://c.hiphotos.baidu.com/zhidao/pic/item/a9d3fd1f4134970aaa953d4796cad1c8a6865df7.jpg" alt="" style={{width: '100%'}}/></div>
+                </ReactSwipe>
+                <br/><br/>
+                <WingBlank>
+                    <Button type="primary" onClick={this.scanCodeReturnStr}>扫二维码</Button><WhiteSpace />
+                </WingBlank>
             </div>
-            
         )
     }
-    // get 请求
-    getImage = () => {
-        this.props.toastActions.show('loading...');
-        setTimeout(() => {
-            get('/福利/10/2')
-                .then( (res) => {
-                    if( res.status === 200 ) {
-                        this.setState({
-                            list : res.data.results
-                        });
-                        this.props.toastActions.hide({ success: true, content: 'success' });
-                    }else {
-                        this.props.toastActions.err({ status: true, msg: '异常' });
-                    }
-                } )
-                .catch( (err) => {
-                    this.props.toastActions.err({ status: true, msg: JSON.stringify(err) });
-                } )
-        },3000);
-    };
-
-    // asyncAction 方式请求
-    getAsyncWelfare = () => {
-        this.props.asyncActions.getWelfare();
-    };
-
 }
-
-function mapStateToProps (state) {
-    return  {
-        user: state.user,
-        async: state.async,
-    }
-}
-function mapDispatchToProps (dispatch) {
-    return {
-        userActions: bindActionCreators(userAction, dispatch),
-        toastActions: bindActionCreators(toastAction, dispatch),
-        asyncActions: bindActionCreators(asyncAction, dispatch),
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

@@ -24,6 +24,23 @@
         if(!window.Promise) {
             document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
         }
+        let prod = false;
+        if( prod ) {
+            let u = navigator.userAgent;
+            let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+            let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+            if(isAndroid){
+                document.write('<script src="static\/android\/cordova.js"><\/script>');
+                document.write('<script src="static\/android\/cordova_plugins.js"><\/script>');
+            }else if(isiOS) {
+                document.write('<script src="static\/ios\/cordova.js"><\/script>');
+                let appVersion = navigator.appVersion.substr(navigator.appVersion.indexOf("iPhone OS")+10,2);
+                if(appVersion.indexOf("-")>0||parseInt(appVersion)<11){
+                    document.write('<link rel="stylesheet" href="static\/style\/default-ios.css"/>')
+                }
+            }
+        }
     </script>
   </head>
   <body>
@@ -41,5 +58,8 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+
+    </script>
   </body>
 </html>
