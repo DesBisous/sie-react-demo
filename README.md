@@ -21,6 +21,8 @@
 >
 > react-swipe swipe-js-iso 加入了轮播图
 > 
+> react-transition-group 增加了路由过渡动画
+>
 
 ## Build Setup
 ``` bash
