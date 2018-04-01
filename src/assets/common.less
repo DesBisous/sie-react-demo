@@ -1,0 +1,87 @@
+html, body, #root, .sie-root {
+  height: 100%;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  *:not(input,textarea) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+  }
+  /**
+   * -webkit-font-smoothing: antialiased; 对字体进行抗锯齿渲染可以使字体看起来会更清晰舒服。
+   * -webkit-font-smoothing它有三个属性值：none：对低像素的文本比较好、subpixel-antialiased：默认值、antialiased：抗锯齿很好
+   * -webkit-user-select: none; 禁止选择文本，全局会导致input在ios不能输入
+   * -webkit-touch-callout: none; 当你触摸并按住触摸目标时候，禁止或显示系统默认菜单。
+   */
+}
+
+.sie-wrapper {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    .sie-header {
+        background-color: #108fe9;
+    }
+    .sie-container {
+        position:relative; 
+        flex: 1;  
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        background-color:#eee;
+        /**
+         * -webkit-overflow-scrolling 属性控制元素在移动设备上是否使用滚动回弹效果.
+         * auto: 使用普通滚动, 当手指从触摸屏上移开，滚动会立即停止。
+         * touch: 使用具有回弹效果的滚动, 当手指从触摸屏上移开，内容会继续保持一段时间的滚动效果。继续滚动的速度和持续的时间和滚动手势的强烈程度成正比。同时也会创建一个新的堆栈上下文。
+         */
+    }
+}
+
+.appAppear-appear{
+  opacity: 0;
+  //transform: scale(0);
+}
+
+.appAppear-appear.appAppear-appear-active{
+  opacity: 1;
+  //transform: scale(1);
+  transition: 500ms ease-out;
+}
+
+
+.right-enter {
+	opacity: 0;
+    transform: translate3d(100%, 0, 0);
+}
+.right-enter.right-enter-active {
+	opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+}
+.right-exit {
+	opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+.right-exit.right-exit-active {
+	opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+    transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.left-enter {
+	opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+}
+.left-enter.left-enter-active {
+	opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+}
+.left-exit {
+	opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+.left-exit.left-exit-active {
+	opacity: 0;
+    transform: translate3d(100%, 0, 0);
+    transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+}
+

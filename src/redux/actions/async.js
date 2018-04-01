@@ -6,7 +6,7 @@ export const getWelfare = () => {
     return ( dispatch, getState ) => {
         // 开启loading
         dispatch(toast.show('loading...'));
-        let page =  Math.round( Math.random() * 10 + 1 );
+        let page =  Math.floor( Math.random() * 10 + 1 );
         get( '/福利/10/' + page )
             .then(res => {
                 dispatch({

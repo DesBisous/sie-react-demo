@@ -33,6 +33,10 @@ class Home extends React.Component {
         );
     };
 
+    componentDidMount() {
+        console.log(22);
+    }
+
     render() {
         const opt = {
             auto: 2500,
@@ -41,17 +45,19 @@ class Home extends React.Component {
             }
         };
         return (
-            <div>
+            <div className="sie-container">
                 <Nav back={this.back} navRightBtn={this.navRightBtn}></Nav>
-                <ReactSwipe swipeOptions={opt}>
-                    <div><img src="http://pic1.win4000.com/wallpaper/2/591be819a33ed.jpg" alt="" style={{width: '100%'}}/></div>
-                    <div><img src="http://www.runningman-fan.com/wp-content/uploads/2015/10/Img0403_20151002165101_1.jpg" alt="" style={{width: '100%'}}/></div>
-                    <div><img src="http://c.hiphotos.baidu.com/zhidao/pic/item/a9d3fd1f4134970aaa953d4796cad1c8a6865df7.jpg" alt="" style={{width: '100%'}}/></div>
-                </ReactSwipe>
-                <br/><br/>
-                <WingBlank>
-                    <Button type="primary" onClick={this.scanCodeReturnStr}>扫二维码</Button><WhiteSpace />
-                </WingBlank>
+                <div>
+                    <ReactSwipe swipeOptions={opt}>
+                        <div><img src="http://pic1.win4000.com/wallpaper/2/591be819a33ed.jpg" alt="" style={{width: '100%'}}/></div>
+                        <div><img src="http://www.runningman-fan.com/wp-content/uploads/2015/10/Img0403_20151002165101_1.jpg" alt="" style={{width: '100%'}}/></div>
+                        <div><img src="http://img1.imgtn.bdimg.com/it/u=140415824,2014107347&fm=27&gp=0.jpg" alt="" style={{width: '100%'}}/></div>
+                    </ReactSwipe>
+                    <br/><br/>
+                    <WingBlank>
+                        <Button type="primary" onClick={this.scanCodeReturnStr}>扫二维码</Button><WhiteSpace />
+                    </WingBlank>
+                </div>
             </div>
         )
     }
