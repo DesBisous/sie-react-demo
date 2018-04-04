@@ -6,6 +6,9 @@ import App from './router';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './redux/store/configureStore'
 import { Provider } from "react-redux";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+
+import './assets/common.less'
 
 initReactFastclick();
 
@@ -14,7 +17,15 @@ const store = configureStore();
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <TransitionGroup>
+            <CSSTransition
+                appear={true}
+                classNames="appAppear"
+                timeout={500}
+            >
+                <App />
+            </CSSTransition>
+        </TransitionGroup>
     </Provider>,
     document.getElementById('root')
 );

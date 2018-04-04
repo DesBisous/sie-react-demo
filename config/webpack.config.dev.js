@@ -145,7 +145,7 @@ module.exports = {
             loader: require.resolve('babel-loader'),
             options: {
               plugins: [
-                  ['import', { libraryName: 'antd-mobile', style: true }] // `style: true` 会加载 less 文件
+                  ['import', { libraryName: 'antd-mobile', style: 'css' }]
                ],
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/

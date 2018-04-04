@@ -27,7 +27,7 @@ export default function toast ( state = initialState, action) {
             return state;
         case actionTypes.TOAST_ERROR:
             // 加载错误
-            Toast.fail(action.err.msg, 3);
+            Toast.fail(action.err.msg, 3 );
             return Object.assign(state, { err: action.err } );
         default:
             return state;
