@@ -15,6 +15,7 @@ class Nav extends React.Component {
     };
 
     navRightBtn = () => {
+        console.log('1111');
         this.props.navRightBtn();
     };
 

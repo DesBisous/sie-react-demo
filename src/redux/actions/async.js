@@ -31,3 +31,9 @@ export const getWelfare = () => {
             })
     }
 };
+
+// redux-saga
+export const gridEvery = (url) => ({
+    type: actionTypes.ASYNC_WELFARE_REQUEST,
+    url
+});

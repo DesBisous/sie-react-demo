@@ -20,13 +20,17 @@ class Girl extends React.Component {
     }
 
     componentDidMount() {
-        console.log(1111111);
         // redux 的使用
         // this.props.userActions.update({name: 'Benson'});
+
         // 普通 get 请求
         // this.getImage();
+
         // asyncAction 方式请求
-        this.getAsyncWelfare();
+        // this.getAsyncWelfare();
+
+        // saga 方式请求
+        this.gridEvery();
     }
 
     // get 请求
@@ -55,6 +59,12 @@ class Girl extends React.Component {
         this.props.asyncActions.getWelfare();
     };
 
+    // asyncAction saga 方式请求
+    gridEvery = () => {
+        let page =  Math.floor( Math.random() * 10 + 1 );
+        this.props.asyncActions.gridEvery('/福利/10/' + page);
+    };
+
     back = () => {
         this.props.history.goBack();
     };
@@ -72,7 +82,7 @@ class Girl extends React.Component {
         let list = this.state.list.length > 0 ? this.state.list :  this.props.async.list;
         return (
             <div>
-                <Nav back={this.back} navRightBtn={this.getAsyncWelfare}></Nav>
+                <Nav back={this.back} navRightBtn={this.gridEvery}></Nav>
                 <div>
                     {/*<h1>此处有福利，看不懂代码的人就没法看，怪我咯~ 哈哈</h1>*/}
                     <Grid list={list} showImg={this.showImg}></Grid>
