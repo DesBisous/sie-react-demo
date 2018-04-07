@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import './assets/common.less'
+import './assets/font.css'
 
 initReactFastclick();
 

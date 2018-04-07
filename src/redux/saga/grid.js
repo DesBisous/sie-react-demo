@@ -1,11 +1,10 @@
 import { delay } from "redux-saga";
-import { call, put, all, takeEvery } from 'redux-saga/effects'
+import { call, put } from 'redux-saga/effects'
 import * as asyncTypes from '../constants/async'
 import * as toastTypes from '../constants/toast'
 import get from '../../api/get';
 
-function* getGrid(action) {
-    console.log('22');
+export default function* getGrid(action) {
     yield put({type: toastTypes.TOAST_SHOW, data: 'loading...'});// 加载中...
     try {
         const res = yield call(get, action.url);
@@ -21,8 +20,3 @@ function* getGrid(action) {
 }
 
 
-export default function* rootSaga() {
-    yield all([
-        takeEvery(asyncTypes.ASYNC_WELFARE_REQUEST, getGrid)
-    ])
-}

@@ -23,6 +23,8 @@
 > 
 > react-transition-group 增加了路由过渡动画
 >
+> redux-saga 异步Action中间件，基于Generator
+> 
 
 ## Build Setup
 ``` bash

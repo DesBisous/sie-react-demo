@@ -1,67 +1,40 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import * as userAction from '../../redux/actions/user';
 import * as toastAction from '../../redux/actions/toast';
 import * as asyncAction from '../../redux/actions/async';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import get from '../../api/get';
 import Nav from "../../components/Nav/index";
 import Grid from "../../components/Grid/index";
 import wpt from "../../utils/wpt";
+import {PullToRefresh} from "antd-mobile";
+import ReactDOM from 'react-dom';
 
 class Girl extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
         this.state = {
-            list : []
+            list : [],
+            refreshing: false,
+            height: document.documentElement.clientHeight,
         }
     }
 
     componentDidMount() {
-        // redux 的使用
-        // this.props.userActions.update({name: 'Benson'});
-
-        // 普通 get 请求
-        // this.getImage();
-
-        // asyncAction 方式请求
-        // this.getAsyncWelfare();
-
         // saga 方式请求
-        this.gridEvery();
-    }
-
-    // get 请求
-    getImage = () => {
-        this.props.toastActions.show('loading...');
+        const height = this.state.height - ReactDOM.findDOMNode(this.ptr).offsetTop;
         setTimeout(() => {
-            get('/福利/10/2')
-                .then( (res) => {
-                    if( res.status === 200 ) {
-                        this.setState({
-                            list : res.data.results
-                        });
-                        this.props.toastActions.hide({ success: true, content: 'success' });
-                    }else {
-                        this.props.toastActions.err({ status: true, msg: '异常' });
-                    }
-                } )
-                .catch( (err) => {
-                    this.props.toastActions.err({ status: true, msg: JSON.stringify(err) });
-                } )
-        },3000);
-    };
-
-    // asyncAction 方式请求
-    getAsyncWelfare = () => {
-        this.props.asyncActions.getWelfare();
-    };
+            this.setState({
+                height: height,
+            });
+            this.gridEvery();
+        }, 0);
+    }
 
     // asyncAction saga 方式请求
     gridEvery = () => {
-        let page =  Math.floor( Math.random() * 10 + 1 );
+        let page =  Math.floor( Math.random() * 50 + 1 );
         this.props.asyncActions.gridEvery('/福利/10/' + page);
     };
 
@@ -81,11 +54,29 @@ class Girl extends React.Component {
     render() {
         let list = this.state.list.length > 0 ? this.state.list :  this.props.async.list;
         return (
-            <div>
-                <Nav back={this.back} navRightBtn={this.gridEvery}></Nav>
+            <div className="sie-container">
+                <Nav back={this.back} city={this.props.loc.city}></Nav>
                 <div>
-                    {/*<h1>此处有福利，看不懂代码的人就没法看，怪我咯~ 哈哈</h1>*/}
-                    <Grid list={list} showImg={this.showImg}></Grid>
+                    <PullToRefresh
+                        ref={el => this.ptr = el}
+                        style={{
+                            height: this.state.height,
+                            overflow: 'auto',
+                        }}
+                        indicator={{}}
+                        direction={'down'}
+                        refreshing={this.state.refreshing}
+                        onRefresh={() => {
+                            this.setState({ refreshing: true });
+                            this.gridEvery();
+                            setTimeout(() => {
+                                this.setState({ refreshing: false });
+                            }, 1000);
+                        }}
+                    >
+                        {/*<h1>此处有福利，看不懂代码的人就没法看，怪我咯~ 哈哈</h1>*/}
+                        <Grid list={list} showImg={this.showImg} width="50%"></Grid>
+                    </PullToRefresh>
                 </div>
             </div>
         )
@@ -94,13 +85,12 @@ class Girl extends React.Component {
 
 function mapStateToProps (state) {
     return  {
-        user: state.user,
         async: state.async,
+        loc: state.loc
     }
 }
 function mapDispatchToProps (dispatch) {
     return {
-        userActions: bindActionCreators(userAction, dispatch),
         toastActions: bindActionCreators(toastAction, dispatch),
         asyncActions: bindActionCreators(asyncAction, dispatch),
     }

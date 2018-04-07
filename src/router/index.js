@@ -5,7 +5,9 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import wrappedRouter from './wrappedRouter'
 import Home from "../containers/Home";
 import Girl from "../containers/Girl";
+import City from "../containers/City";
 import NotFound from "../containers/NotFound";
+import Help from "../containers/Help/index";
 
 
 
@@ -38,7 +40,9 @@ class appRouter extends Component {
                                 <Switch location={location}>
                                     <Route exact path="/" render={ () => <Redirect to="/home" push /> } />
                                     <Route path="/home" component={ Home } />
+                                    <Route path="/city" component={ City } />
                                     <Route path="/girl" component={ Girl } />
+                                    <Route path="/help" component={ Help }/>
                                     <Route path="/404" component={ NotFound } />
                                     <Route component={ NotFound } />
                                 </Switch>

@@ -78,7 +78,7 @@ module.exports = {
     ),
     // These are the reasonable defaults supported by the Node ecosystem.
     // We also include JSX as a common component filename extension to support
-    // some tools, although we do not recommend using it, see:
+    // some tools, although we do not recommend.jsx using it, see:
     // https://github.com/facebookincubator/create-react-app/issues/290
     // `web` extension prefixes have been added for better support
     // for React Native Web.
@@ -166,6 +166,10 @@ module.exports = {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
+                  //  ant不能被模块化，不能包含在里面，资料：https://segmentfault.com/a/1190000011225917
+                  //  自己配置CSS Module，如下配置，但是css配置了，但DOM上面的className未能对应上模块化后的css名字，资料：https://blog.csdn.net/qq_33065315/article/details/53353416
+                  // modules: true,   // 新增对css modules的支持
+                  // localIdentName: '[name]__[local]__[hash:base64:5]', //
                 },
               },
               {
@@ -189,7 +193,7 @@ module.exports = {
                 },
               },
               {
-                loader: require.resolve('less-loader') // compiles Less to CSS
+                loader: require.resolve('less-loader'), // compiles Less to CSS
               }
             ],
           },

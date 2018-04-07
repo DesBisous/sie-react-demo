@@ -3,17 +3,13 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 
 import './style.less'
 
-class GridImg extends React.Component {
+class ReBlock extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     }
-
-    showImg = () => {
-      this.props.showImg();
-    };
-
     render() {
+        const list = this.props.list.slice(0, 6);
         const style = {
             width: this.props.width
         };
@@ -21,13 +17,15 @@ class GridImg extends React.Component {
             <div>
                 <ul>
                     {
-                        this.props.list.map(
-                            (item, index) => <li key={index} onClick={this.showImg} style={style}>
+                        list.map((item, index) => {
+                            return <li key={index} style={style}>
                                 <span className="imgBlock">
-                                    <img src={item.url} alt=""/>
+                                    <img src={item.src} alt=""/>
                                 </span>
+                                <span className="name">{item.name}</span>
+                                <span className="desc">{item.profession}</span>
                             </li>
-                        )
+                        })
                     }
                 </ul>
             </div>
@@ -35,4 +33,4 @@ class GridImg extends React.Component {
     }
 }
 
-export default GridImg
+export default ReBlock

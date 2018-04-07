@@ -3,7 +3,7 @@ import rootReducer from '../reducers'
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
 import createSagaMiddleware from 'redux-saga'
-import rootSaga from '../saga/grid'
+import rootSaga from '../saga/rootSaga'
 
 const logger = createLogger({
     // ...options

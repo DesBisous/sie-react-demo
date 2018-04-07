@@ -2,6 +2,9 @@ html, body, #root, .sie-root {
   height: 100%;
   width: 100%;
   -webkit-font-smoothing: antialiased;
+  * {
+    font-family: "微软雅黑","Times New Roman",Georgia,Serif;
+  }
   *:not(input,textarea) {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -17,12 +20,9 @@ html, body, #root, .sie-root {
     display: flex;
     height: 100%;
     flex-direction: column;
-    .sie-header {
-        background-color: #108fe9;
-    }
     .sie-container {
-        position:relative; 
-        flex: 1;  
+        position:relative;
+        flex: 1;
         overflow: auto;
         -webkit-overflow-scrolling: touch;
         background-color:#eee;
