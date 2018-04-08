@@ -18,13 +18,14 @@ class ReBlock extends React.Component {
                 <ul>
                     {
                         list.map((item, index) => {
-                            return <li key={index} style={style}>
-                                <span className="imgBlock">
-                                    <img src={item.src} alt=""/>
-                                </span>
-                                <span className="name">{item.name}</span>
-                                <span className="desc">{item.profession}</span>
-                            </li>
+                            return <li key={index} style={style} onClick={() => {this.props.goToCV(item.id)}}>
+                                    <span className="imgBlock">
+                                        <img src={item.src} alt=""/>
+                                    </span>
+                                    <span className="name">{item.name}</span>
+                                    <span className="desc">{item.profession}</span>
+                                </li>
+
                         })
                     }
                 </ul>

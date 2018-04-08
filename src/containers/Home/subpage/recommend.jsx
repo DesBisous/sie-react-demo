@@ -13,7 +13,7 @@ class Recommend extends React.Component {
         return (
             <div>
                 <p className="recommend-p">人气榜</p>
-                <ReBlock list={this.props.async.local} width="33.333333%"></ReBlock>
+                <ReBlock list={this.props.async.local} goToCV={this.props.goToCV} width="33.333333%"></ReBlock>
             </div>
         )
     }

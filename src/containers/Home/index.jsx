@@ -29,11 +29,15 @@ class Home extends React.Component {
     };
 
     componentDidMount() {
+        console.log(this.props);
         this.getLocal();
     }
 
     getLocal = () => {
         this.props.asyncActions.localData();
+    };
+    goToCV(id) {
+        this.props.history.push({pathname: '/CurriculumVitae', id: id})
     };
 
     render() {
@@ -41,8 +45,8 @@ class Home extends React.Component {
             <div className="sie-container">
                 <Nav back={this.back} city={this.props.loc.city}></Nav>
                 <Swipe></Swipe>
-                <Recommend></Recommend>
-                <Ranking></Ranking>
+                <Recommend goToCV={this.goToCV.bind(this)}></Recommend>
+                <Ranking goToCV={this.goToCV.bind(this)}></Ranking>
             </div>
         )
     }

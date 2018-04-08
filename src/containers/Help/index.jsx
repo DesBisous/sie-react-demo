@@ -47,9 +47,9 @@ class Help extends React.Component {
                     <WhiteSpace size="sm" />
                     <WingBlank size="lg">
                         <p style={info}><span className="icon-grin"></span>&nbsp;&nbsp;作者： Benson</p>
-                        <p style={info}><span class="icon-clock"></span>&nbsp;&nbsp;时间： 2018-04-10</p>
-                        <p style={info}><span class="icon-envelope"></span>&nbsp;&nbsp;email: desbisous@foxmail.com</p>
-                        <p style={info}><span class="icon-github2"></span>&nbsp;&nbsp;GitHub: https://github.com/DesBisous/sie-react-demo</p>
+                        <p style={info}><span className="icon-clock"></span>&nbsp;&nbsp;时间： 2018-04-10</p>
+                        <p style={info}><span className="icon-envelope"></span>&nbsp;&nbsp;email: desbisous@foxmail.com</p>
+                        <p style={info}><span className="icon-github2"></span>&nbsp;&nbsp;GitHub: https://github.com/DesBisous/sie-react-demo</p>
                     </WingBlank>
                     <WhiteSpace size="lg" />
                 </div>

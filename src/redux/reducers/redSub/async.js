@@ -12,6 +12,8 @@ export default function async ( state = initialState, action) {
             return state;
         case actionTypes.ASYNC_LOCAL_SUCCESS:
             return { ...state, local: state.local.concat(action.data) };
+        case actionTypes.ASYNC_LOCAL_SUCCESS_UPDATE:
+            return { ...state, local: action.data };
         case actionTypes.ASYNC_LOCAL_ERROR:
             return state;
         default:

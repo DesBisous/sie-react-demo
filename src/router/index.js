@@ -8,6 +8,8 @@ import Girl from "../containers/Girl";
 import City from "../containers/City";
 import NotFound from "../containers/NotFound";
 import Help from "../containers/Help/index";
+import Search from "../containers/Search/index";
+import CurriculumVitae from "../containers/CurriculumVitae/index";
 
 
 
@@ -42,7 +44,9 @@ class appRouter extends Component {
                                     <Route path="/home" component={ Home } />
                                     <Route path="/city" component={ City } />
                                     <Route path="/girl" component={ Girl } />
-                                    <Route path="/help" component={ Help }/>
+                                    <Route path="/help" component={ Help } />
+                                    <Route path="/search" component={ Search } />
+                                    <Route path="/CurriculumVitae" component={ CurriculumVitae } />
                                     <Route path="/404" component={ NotFound } />
                                     <Route component={ NotFound } />
                                 </Switch>
