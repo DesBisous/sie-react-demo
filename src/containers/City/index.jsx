@@ -20,8 +20,10 @@ class City extends React.Component {
         return (
             <div className="sie-container">
                 <Nav back={this.back} city={this.props.loc.city}></Nav>
-                <CurrentCity city={this.props.loc.city}/>
-                <CityList changeFn={this.changeCity}/>
+                <div className="has-header">
+                    <CurrentCity city={this.props.loc.city}/>
+                    <CityList changeFn={this.changeCity}/>
+                </div>
             </div>
         )
     }

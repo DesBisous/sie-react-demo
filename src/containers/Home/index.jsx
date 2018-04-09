@@ -29,7 +29,7 @@ class Home extends React.Component {
     };
 
     componentDidMount() {
-        console.log(this.props);
+        // console.log(this.props);
         this.getLocal();
     }
 
@@ -44,9 +44,11 @@ class Home extends React.Component {
         return (
             <div className="sie-container">
                 <Nav back={this.back} city={this.props.loc.city}></Nav>
-                <Swipe></Swipe>
-                <Recommend goToCV={this.goToCV.bind(this)}></Recommend>
-                <Ranking goToCV={this.goToCV.bind(this)}></Ranking>
+                <div className="has-header">
+                    <Swipe></Swipe>
+                    <Recommend goToCV={this.goToCV.bind(this)}></Recommend>
+                    <Ranking goToCV={this.goToCV.bind(this)}></Ranking>
+                </div>
             </div>
         )
     }

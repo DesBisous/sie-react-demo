@@ -11,7 +11,7 @@ class ListView extends React.Component {
     render() {
         const item = this.props.item;
         return (
-            <div className="list">
+            <div className="list" onClick={() => {this.props.goToCV(item.id)}}>
                 <div className="listLeft">
                     <div className="imgBlock">
                         <img src={item.src} alt=""/>

@@ -56,7 +56,7 @@ class Girl extends React.Component {
         return (
             <div className="sie-container">
                 <Nav back={this.back} city={this.props.loc.city}></Nav>
-                <div>
+                <div className="has-header">
                     <PullToRefresh
                         ref={el => this.ptr = el}
                         style={{

@@ -44,7 +44,7 @@ class Ranking extends React.Component {
                 {
                     this.props.async.local.length
                         ?  this.props.async.local.map((item, index) => {
-                            return <ListView key={index} item={item}></ListView>
+                            return <ListView key={index} item={item} goToCV={this.props.goToCV}></ListView>
                         }) : ''
                 }
                 {

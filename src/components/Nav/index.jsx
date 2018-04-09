@@ -38,7 +38,7 @@ class Nav extends React.Component {
         return (
             <div>
                 <NavBar
-                    className="sie-header"
+                    className="header"
                     mode="dark"
                     icon={<Icon type="left" />}
                     onLeftClick={this.back}
@@ -57,7 +57,7 @@ class Nav extends React.Component {
                                  ]}
                                  align={{
                                      overflow: { adjustY: 0, adjustX: 0 },
-                                     offset: [-10, 0],
+                                     offset: [-18, 5],
                                  }}
                                  onVisibleChange={this.handleVisibleChange}
                                  onSelect={this.onSelect}

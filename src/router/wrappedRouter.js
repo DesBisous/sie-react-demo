@@ -20,7 +20,7 @@ export default (Router) => {
 
         componentWillMount() {
             new Promise((resolve, reject) => {
-                if ( axiosConfig.isDev ) {
+                if ( true || axiosConfig.isDev ) {
                     let user = {
                         userId: '123',
                         userName: 'Benson'
@@ -67,7 +67,7 @@ export default (Router) => {
 
         render() {
             return (
-                <div>
+                <div className="sie-wrapper">
                     {
                         this.state.WebView ?  <Router/> : ''
                     }
