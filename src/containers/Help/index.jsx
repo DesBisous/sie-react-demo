@@ -20,9 +20,9 @@ class Help extends React.Component {
             alignItems: 'center'
         };
         return (
-            <div className="sie-container">
+            <div className="sie-wrapper">
                 <Nav back={this.back} city={this.props.loc.city}></Nav>
-                <div className="has-header">
+                <div className="sie-container">
                     <WhiteSpace size="lg" />
                     <WingBlank size="lg">
                         <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523127069650&di=e6fc2691facded9f2755b9456da282d2&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fzhidao%2Fwh%253D450%252C600%2Fsign%3D99a8b3578335e5dd9079addb43f68bd9%2F730e0cf3d7ca7bcbdc2c942ab8096b63f624a864.jpg" alt=""/>

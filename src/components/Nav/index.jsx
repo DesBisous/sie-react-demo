@@ -36,39 +36,37 @@ class Nav extends React.Component {
     render() {
         const city = this.props.city;
         return (
-            <div>
-                <NavBar
-                    className="header"
-                    mode="dark"
-                    icon={<Icon type="left" />}
-                    onLeftClick={this.back}
-                    rightContent={[
-                        <Link to="/city" key="0">
-                            <span className="cityName">{city}</span>
-                        </Link>,
-                        <Popover mask key="1"
-                                 overlayClassName="fortest"
-                                 overlayStyle={{ color: 'currentColor' }}
-                                 visible={this.state.visible}
-                                 overlay={[
-                                     (<Item key="2" value="search"><Link to="/search" className="link-a"><span className="icon-search"></span> 搜索</Link></Item>),
-                                     (<Item key="3" value="girl"><Link to="/girl" className="link-a"><span className="icon-evil"></span> 女孩</Link></Item>),
-                                     (<Item key="4" value="help"><Link to="/help" className="link-a"><span className="icon-question-circle"></span> 帮助</Link></Item>)
-                                 ]}
-                                 align={{
-                                     overflow: { adjustY: 0, adjustX: 0 },
-                                     offset: [-18, 5],
-                                 }}
-                                 onVisibleChange={this.handleVisibleChange}
-                                 onSelect={this.onSelect}
-                        >
-                            <div className="popover">
-                                <Icon type="ellipsis"/>
-                            </div>
-                        </Popover>,
-                    ]}
-                >名人榜</NavBar>
-            </div>
+            <NavBar
+                className="header"
+                mode="dark"
+                icon={<Icon type="left" />}
+                onLeftClick={this.back}
+                rightContent={[
+                    <Link to="/city" key="0">
+                        <span className="cityName">{city}</span>
+                    </Link>,
+                    <Popover mask key="1"
+                             overlayClassName="fortest"
+                             overlayStyle={{ color: 'currentColor', minWidth: '100px' }}
+                             visible={this.state.visible}
+                             overlay={[
+                                 (<Item key="2" value="search"><Link to="/search" className="link-a" style={{minWidth: '60px', whiteSpace: 'nowrap'}}><span className="icon-search"></span> 搜索</Link></Item>),
+                                 (<Item key="3" value="girl"><Link to="/girl" className="link-a" style={{minWidth: '60px', whiteSpace: 'nowrap'}}><span className="icon-evil"></span> 女孩</Link></Item>),
+                                 (<Item key="4" value="help"><Link to="/help" className="link-a" style={{minWidth: '60px', whiteSpace: 'nowrap'}}><span className="icon-question-circle"></span> 帮助</Link></Item>)
+                             ]}
+                             align={{
+                                 overflow: { adjustY: 0, adjustX: 0 },
+                                 offset: [-12, 5]
+                             }}
+                             onVisibleChange={this.handleVisibleChange}
+                             onSelect={this.onSelect}
+                    >
+                        <div className="popover">
+                            <Icon type="ellipsis"/>
+                        </div>
+                    </Popover>,
+                ]}
+            >名人榜</NavBar>
         )
     }
 }

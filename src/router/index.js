@@ -23,9 +23,9 @@ class appRouter extends Component {
     componentWillMount() {
         document.body.style.margin = "0px";
         // 这是防止页面被拖拽
-        document.body.addEventListener('touchmove', (ev) => {
-            ev.preventDefault();
-        });
+        // document.body.addEventListener('touchmove', (ev) => {
+        //     ev.preventDefault();
+        // });
     }
 
     render () {
@@ -33,7 +33,7 @@ class appRouter extends Component {
             <Router>
                 <Route
                     render={({ location, history }) => (
-                        <TransitionGroup>
+                        <TransitionGroup component={null}>
                             <CSSTransition
                                 key={location.pathname}
                                 classNames={history.action === 'PUSH' ? 'right' : 'left'}

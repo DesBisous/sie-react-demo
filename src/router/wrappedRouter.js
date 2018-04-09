@@ -67,7 +67,7 @@ export default (Router) => {
 
         render() {
             return (
-                <div className="sie-wrapper">
+                <div className="sie-root">
                     {
                         this.state.WebView ?  <Router/> : ''
                     }

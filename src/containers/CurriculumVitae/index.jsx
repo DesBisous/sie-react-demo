@@ -17,9 +17,9 @@ class CurriculumVitae extends React.Component {
         const id = this.props.location.id;
         let item = this.props.async.local.filter((item) => item.id === id )[0];
         return (
-            <div className="sie-container">
+            <div className="sie-wrapper">
                 <Nav back={this.back} city={this.props.loc.city}></Nav>
-                <div className="has-header">
+                <div className="sie-container">
                     <div className="cv-img">
                         <div className="imgBlock">
                             <img src={item.src} alt="头像"/>

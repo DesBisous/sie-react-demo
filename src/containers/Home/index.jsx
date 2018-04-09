@@ -42,9 +42,9 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div className="sie-container">
+            <div className="sie-wrapper">
                 <Nav back={this.back} city={this.props.loc.city}></Nav>
-                <div className="has-header">
+                <div className="sie-container">
                     <Swipe></Swipe>
                     <Recommend goToCV={this.goToCV.bind(this)}></Recommend>
                     <Ranking goToCV={this.goToCV.bind(this)}></Ranking>

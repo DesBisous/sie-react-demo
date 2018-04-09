@@ -18,7 +18,7 @@ const store = configureStore();
 
 ReactDOM.render(
     <Provider store={store}>
-        <TransitionGroup>
+        <TransitionGroup component={null} >
             <CSSTransition
                 appear={true}
                 classNames="appAppear"

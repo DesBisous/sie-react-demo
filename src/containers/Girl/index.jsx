@@ -54,9 +54,9 @@ class Girl extends React.Component {
     render() {
         let list = this.state.list.length > 0 ? this.state.list :  this.props.async.list;
         return (
-            <div className="sie-container">
+            <div className="sie-wrapper">
                 <Nav back={this.back} city={this.props.loc.city}></Nav>
-                <div className="has-header">
+                <div className="sie-container">
                     <PullToRefresh
                         ref={el => this.ptr = el}
                         style={{

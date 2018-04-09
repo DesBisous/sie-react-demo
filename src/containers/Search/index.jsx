@@ -85,33 +85,31 @@ class Search extends React.Component {
             );
         };
         return (
-            <div className="sie-container">
+            <div className="sie-wrapper">
                 <Nav back={this.back} city={this.props.loc.city}></Nav>
-                <div className="has-header">
-                    <SearchHeader enterHandle={this.refresh}></SearchHeader>
-                    <div>
-                        <ListView
-                            ref={el => this.lv = el}
-                            dataSource={this.state.dataSource}
-                            renderHeader={() => <span>Pull to refresh</span>}
-                            renderFooter={() => (<div style={{ padding: 0, textAlign: 'center' }}>
-                                {this.state.isLoading ? 'Loading...' : 'Loaded'}
-                            </div>)}
-                            renderRow={row}
-                            renderSeparator={separator}
-                            className="am-list"
-                            pageSize={this.state.pageSize}
-                            useBodyScroll
-                            onScroll={() => {  }}
-                            scrollRenderAheadDistance={500}
-                            pullToRefresh={<PullToRefresh
-                                refreshing={this.state.refreshing}
-                                onRefresh={this.refresh}
-                            />}
-                            onEndReached={this.onEndReached}
-                            onEndReachedThreshold={10}
-                        />
-                    </div>
+                <SearchHeader enterHandle={this.refresh}></SearchHeader>
+                <div className="sie-container">
+                    <ListView
+                        ref={el => this.lv = el}
+                        dataSource={this.state.dataSource}
+                        renderHeader={() => <span>Pull to refresh</span>}
+                        renderFooter={() => (<div style={{ padding: 0, textAlign: 'center' }}>
+                            {this.state.isLoading ? 'Loading...' : 'Loaded'}
+                        </div>)}
+                        renderRow={row}
+                        renderSeparator={separator}
+                        className="am-list"
+                        pageSize={this.state.pageSize}
+                        useBodyScroll
+                        onScroll={() => {  }}
+                        scrollRenderAheadDistance={500}
+                        pullToRefresh={<PullToRefresh
+                            refreshing={this.state.refreshing}
+                            onRefresh={this.refresh}
+                        />}
+                        onEndReached={this.onEndReached}
+                        onEndReachedThreshold={10}
+                    />
                 </div>
             </div>
         )

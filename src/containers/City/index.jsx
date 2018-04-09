@@ -18,9 +18,9 @@ class City extends React.Component {
     };
     render() {
         return (
-            <div className="sie-container">
+            <div className="sie-wrapper">
                 <Nav back={this.back} city={this.props.loc.city}></Nav>
-                <div className="has-header">
+                <div className="sie-container">
                     <CurrentCity city={this.props.loc.city}/>
                     <CityList changeFn={this.changeCity}/>
                 </div>
