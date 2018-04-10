@@ -10,11 +10,17 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 
 import './style.less'
+import {PullToRefresh} from "antd-mobile";
 
 class Home extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+        this.state = {
+            refreshing: false,
+            hasMore: true,
+            height: document.documentElement.clientHeight,
+        }
     }
 
     back = () => {
@@ -39,23 +45,58 @@ class Home extends React.Component {
     goToCV(id) {
         this.props.history.push({pathname: '/CurriculumVitae', id: id})
     };
+    // 加载更多数据
+    loadMoreData = () => {
+        if( this.state.hasMore && !this.state.refreshing ) {
+            // 记录状态
+            this.setState({
+                refreshing: true
+            });
+            setTimeout(() => {
+                // 加载更多
+                this.props.asyncActions.localData();
 
+                // 记录状态
+                this.setState({
+                    refreshing: false
+                });
+                console.log(this.props.async);
+                if( this.props.async.local.length > 18 ) {
+                    this.setState({
+                        hasMore: false
+                    });
+                }
+            },1000);
+        }
+    };
     render() {
         return (
             <div className="sie-wrapper">
                 <Nav back={this.back} city={this.props.loc.city}></Nav>
-                <div className="sie-container">
+                <PullToRefresh
+                    className="sie-container"
+                    ref={el => this.ptr = el}
+                    style={{
+                        height: this.state.height,
+                        overflow: 'auto',
+                    }}
+                    indicator={{ activate: this.state.hasMore?'松开立即刷新':'无更多数据' }}
+                    direction={'up'}
+                    refreshing={this.state.refreshing}
+                    onRefresh={this.loadMoreData}
+                >
                     <Swipe></Swipe>
                     <Recommend goToCV={this.goToCV.bind(this)}></Recommend>
                     <Ranking goToCV={this.goToCV.bind(this)}></Ranking>
-                </div>
+                </PullToRefresh>
             </div>
         )
     }
 }
 function mapStateToProps (state) {
     return  {
-        loc: state.loc
+        loc: state.loc,
+        async: state.async
     }
 }
 function mapDispatchToProps (dispatch) {

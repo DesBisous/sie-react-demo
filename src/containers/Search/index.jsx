@@ -17,12 +17,13 @@ class Search extends React.Component {
         });
         this.state = {
             dataSource,
-            isLoading: true,
+            isLoading: false,
             pageIndex: 0,
             numRows: 6,
             pageSize: 6,
             hasMore: true,
-            refreshing: false
+            refreshing: false,
+            height: document.documentElement.clientHeight - 45 - 48,
         };
     }
     componentDidMount() {
@@ -50,7 +51,9 @@ class Search extends React.Component {
         }
     }
     onEndReached = (event) => {
-        if (this.state.isLoading && !this.state.hasMore) {
+        console.log(this.state.isLoading);
+        console.log(this.state.hasMore);
+        if (this.state.isLoading || !this.state.hasMore) {
             return;
         }
         this.setState({ isLoading: true });
@@ -81,36 +84,36 @@ class Search extends React.Component {
         );
         const row = (rowData, sectionID, rowID) => {
             return (
-                <MyListView key={rowID} item={rowData} goToCV={this.props.goToCV}></MyListView>
+                <MyListView key={rowID} item={rowData} goToCV={this.goToCV.bind(this)}></MyListView>
             );
         };
         return (
             <div className="sie-wrapper">
                 <Nav back={this.back} city={this.props.loc.city}></Nav>
                 <SearchHeader enterHandle={this.refresh}></SearchHeader>
-                <div className="sie-container">
-                    <ListView
-                        ref={el => this.lv = el}
-                        dataSource={this.state.dataSource}
-                        renderHeader={() => <span>Pull to refresh</span>}
-                        renderFooter={() => (<div style={{ padding: 0, textAlign: 'center' }}>
-                            {this.state.isLoading ? 'Loading...' : 'Loaded'}
-                        </div>)}
-                        renderRow={row}
-                        renderSeparator={separator}
-                        className="am-list"
-                        pageSize={this.state.pageSize}
-                        useBodyScroll
-                        onScroll={() => {  }}
-                        scrollRenderAheadDistance={500}
-                        pullToRefresh={<PullToRefresh
-                            refreshing={this.state.refreshing}
-                            onRefresh={this.refresh}
-                        />}
-                        onEndReached={this.onEndReached}
-                        onEndReachedThreshold={10}
-                    />
-                </div>
+                <ListView
+                    ref={el => this.lv = el}
+                    dataSource={this.state.dataSource}
+                    renderHeader={() => <span>Pull to refresh</span>}
+                    renderFooter={() => (<div style={{ padding: 0, textAlign: 'center' }}>
+                        {this.state.isLoading ? 'Loading...' : 'Loaded'}
+                    </div>)}
+                    renderRow={row}
+                    renderSeparator={separator}
+                    className="am-list sie-container"
+                    pageSize={this.state.pageSize}
+                    onScroll={() => {  }}
+                    scrollRenderAheadDistance={500}
+                    pullToRefresh={<PullToRefresh
+                        refreshing={this.state.refreshing}
+                        onRefresh={this.refresh}
+                    />}
+                    onEndReached={this.onEndReached}
+                    onEndReachedThreshold={10}
+                    style={{
+                        height: this.state.height,
+                    }}
+                />
             </div>
         )
     }

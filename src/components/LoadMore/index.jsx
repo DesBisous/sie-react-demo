@@ -14,7 +14,7 @@ class LoadMore extends React.Component {
                 {
                     this.props.isLoadingMore
                     ? <span>加载中...</span>
-                    : <span>加载中...</span>
+                    : <span></span>
                 }
             </div>
         )
@@ -35,6 +35,7 @@ class LoadMore extends React.Component {
             }
         };
         window.addEventListener('scroll', () => {
+            console.log('top:'+this.props.isLoadingMore);
             if (this.props.isLoadingMore) {
                 return
             }
