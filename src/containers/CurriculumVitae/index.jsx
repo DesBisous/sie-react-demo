@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import Nav from "../../components/Nav/index";
 
 import './style.less'
+import Star from "../../components/Star/index";
 
 class CurriculumVitae extends React.Component {
     constructor(props, context) {
@@ -41,6 +42,7 @@ class CurriculumVitae extends React.Component {
                     </div>
                     <div className="cv-info">
                         <h3>{item.name}</h3>
+                        <span className="desc"><Star score={item.score}></Star></span>
                         <span className="desc">{item.profession}</span>
                         <span className="desc">国籍: {item.nationality}</span>
                         <span className="desc">{item.profession}</span>

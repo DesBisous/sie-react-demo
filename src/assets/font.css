@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:  url('fonts/icomoon.eot?suc9d4');
-    src:  url('fonts/icomoon.eot?suc9d4#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?suc9d4') format('truetype'),
-    url('fonts/icomoon.woff?suc9d4') format('woff'),
-    url('fonts/icomoon.svg?suc9d4#icomoon') format('svg');
+    src:  url('fonts/icomoon.eot?ci5kzu');
+    src:  url('fonts/icomoon.eot?ci5kzu#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ci5kzu') format('truetype'),
+    url('fonts/icomoon.woff?ci5kzu') format('woff'),
+    url('fonts/icomoon.svg?ci5kzu#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -30,6 +30,9 @@
 .icon-star:before {
     content: "\f005";
 }
+.icon-star-o:before {
+    content: "\f006";
+}
 .icon-question-circle:before {
     content: "\f059";
 }
@@ -47,6 +50,15 @@
 }
 .icon-envelope:before {
     content: "\f0e0";
+}
+.icon-star-half-empty:before {
+    content: "\f123";
+}
+.icon-star-half-full:before {
+    content: "\f123";
+}
+.icon-star-half-o:before {
+    content: "\f123";
 }
 .icon-map:before {
     content: "\f279";

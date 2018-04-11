@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "金所炫",
+    "score": 4.5,
     "profession": "演员、主持人",
     "height": "166cm",
     "weight": "45kg",
@@ -14,6 +15,7 @@
   {
     "id": 2,
     "name": "朴宝英",
+    "score": 4,
     "profession": "演员",
     "height": "158cm",
     "weight": "41kg",
@@ -26,6 +28,7 @@
   {
     "id": 3,
     "name": "李光洙",
+    "score": 4.5,
     "profession": "演员、模特、主持",
     "height": "190cm",
     "weight": "78kg",
@@ -38,6 +41,7 @@
   {
     "id": 4,
     "name": "宋智孝",
+    "score": 3.5,
     "profession": "演员、模特、主持人",
     "height": "168cm",
     "weight": "46kg",
@@ -50,6 +54,7 @@
   {
     "id": 5,
     "name": "刘在石",
+    "score": 0,
     "profession": "主持人，搞笑艺人，演员",
     "height": "178cm",
     "weight": "65kg",
@@ -62,6 +67,7 @@
   {
     "id": 6,
     "name": "孔刘",
+    "score": 0.5,
     "profession": "演员",
     "height": "184cm",
     "weight": "74kg",

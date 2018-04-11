@@ -27,6 +27,9 @@
 > 
 
 ## Build Setup
+
+Web使用需要把public/index.html的prod=false
+
 ``` bash
 # install dependencies
 npm install
