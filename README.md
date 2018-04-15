@@ -51,4 +51,4 @@ npm test
 ```
 
 ## 预览
-![首页](./public/static/image/预览1.png)
+![首页](./public/static/image/预览1.png =375x667)
