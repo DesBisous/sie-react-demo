@@ -49,3 +49,6 @@ npm run build
 # run all tests
 npm test
 ```
+
+## 预览
+![首页](./public/static/image/预览1.png)
