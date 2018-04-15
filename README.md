@@ -51,4 +51,4 @@ npm test
 ```
 
 ## 预览
-![首页](./public/static/image/预览1.png){:width="375px"}
+<img src="./public/static/image/预览1.png" alt="首页" width = "375px" />
