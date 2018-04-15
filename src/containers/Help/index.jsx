@@ -3,11 +3,28 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Nav from "../../components/Nav/index";
 import {connect} from "react-redux";
 import {WhiteSpace, WingBlank} from "antd-mobile";
+import QueueAnim from "rc-queue-anim";
 
 class Help extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+        this.state = {
+            show: false,
+            show2: false
+        }
+    }
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({
+                show: true
+            });
+            setTimeout(() => {
+                this.setState({
+                    show2: true
+                });
+            }, 1200);
+        }, 300);
     }
     back = () => {
         this.props.history.goBack();
@@ -31,25 +48,44 @@ class Help extends React.Component {
                         <div>
                             <h3>- 本项目集成和配置的内容如下：</h3>
                             <ol>
-                                <li style={{paddingBottom: '5px'}}>react-addons-pure-render-mixin 项目优化插件，重写了生命周期的：shouldComponentUpdate方法</li>
-                                <li style={{paddingBottom: '5px'}}>react-swipe swipe-js-iso 加入了轮播图</li>
-                                <li style={{paddingBottom: '5px'}}>react-transition-group 增加了路由过渡动画</li>
-                                <li style={{paddingBottom: '5px'}}>react-redux redux 进行了redux的集成</li>
-                                <li style={{paddingBottom: '5px'}}>redux-logger  日志中间件</li>
-                                <li style={{paddingBottom: '5px'}}>redux-thunk   异步Action中间件</li>
-                                <li style={{paddingBottom: '5px'}}>redux-saga 异步Action中间件，基于Generator</li>
-                                <li style={{paddingBottom: '5px'}}>redux-devtools  加入 游览器 Redux 状态管理的追踪</li>
-                                <li style={{paddingBottom: '5px'}}>antd-mobile 使用了蚂蚁金融开发的app UI框架</li>
-                                <li style={{paddingBottom: '5px'}}>axios 请求使用axios进行支持</li>
+                                <QueueAnim className="demo-content"
+                                           key="ol"
+                                           type="bottom"
+                                           ease={['easeOutQuart', 'easeInOutQuart']}>
+                                    {
+                                        this.state.show ? [
+                                            <li key="0" style={{paddingBottom: '5px'}}>react-addons-pure-render-mixin 项目优化插件，重写了生命周期的：shouldComponentUpdate方法</li>,
+                                            <li key="1" style={{paddingBottom: '5px'}}>react-swipe swipe-js-iso 加入了轮播图</li>,
+                                            <li key="2" style={{paddingBottom: '5px'}}>react-transition-group 增加了路由过渡动画</li>,
+                                            <li key="3" style={{paddingBottom: '5px'}}>react-redux redux 进行了redux的集成</li>,
+                                            <li key="4" style={{paddingBottom: '5px'}}>redux-logger  日志中间件</li>,
+                                            <li key="5" style={{paddingBottom: '5px'}}>redux-thunk   异步Action中间件</li>,
+                                            <li key="6" style={{paddingBottom: '5px'}}>redux-saga 异步Action中间件，基于Generator</li>,
+                                            <li key="7" style={{paddingBottom: '5px'}}>redux-devtools  加入 游览器 Redux 状态管理的追踪</li>,
+                                            <li key="8" style={{paddingBottom: '5px'}}>antd-mobile 使用了蚂蚁金融开发的app UI框架</li>,
+                                            <li key="9" style={{paddingBottom: '5px'}}>axios 请求使用axios</li>,
+                                            <li key="10" style={{paddingBottom: '5px'}}>Ant Motion 动画</li>
+                                        ]: null
+                                    }
+                                </QueueAnim>
                             </ol>
                         </div>
                     </WingBlank>
                     <WhiteSpace size="sm" />
                     <WingBlank size="lg">
-                        <p style={info}><span className="icon-grin"></span>&nbsp;&nbsp;作者： Benson</p>
-                        <p style={info}><span className="icon-clock"></span>&nbsp;&nbsp;时间： 2018-04-10</p>
-                        <p style={info}><span className="icon-envelope"></span>&nbsp;&nbsp;email: desbisous@foxmail.com</p>
-                        <p style={info}><span className="icon-github2"></span>&nbsp;&nbsp;GitHub: https://github.com/DesBisous/sie-react-demo</p>
+                        <QueueAnim className="demo-content"
+                                   key="ol"
+                                   type="bottom"
+                                   ease={['easeOutQuart', 'easeInOutQuart']}>
+                            {
+                                    this.state.show2 ? [
+                                        <p key="0" style={info}><span className="icon-grin"></span>&nbsp;&nbsp;作者： Benson</p>,
+                                        <p key="1" style={info}><span className="icon-clock"></span>&nbsp;&nbsp;时间： 2018-04-10</p>,
+                                        <p key="2" style={info}><span className="icon-envelope"></span>&nbsp;&nbsp;email: desbisous@foxmail.com</p>,
+                                        <p key="3" style={info}><span className="icon-github2"></span>&nbsp;&nbsp;GitHub: https://github.com/DesBisous/sie-react-demo</p>,
+                                    ]:null
+                            }
+                        </QueueAnim>
                     </WingBlank>
                     <WhiteSpace size="lg" />
                 </div>

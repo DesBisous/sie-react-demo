@@ -1,5 +1,6 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import QueueAnim from "rc-queue-anim";
 
 import './style.less'
 
@@ -16,6 +17,7 @@ class ReBlock extends React.Component {
         return (
             <div>
                 <ul>
+                    <QueueAnim type="bottom" component="ul">
                     {
                         list.map((item, index) => {
                             return <li key={index} style={style} onClick={() => {this.props.goToCV(item.id)}}>
@@ -28,6 +30,7 @@ class ReBlock extends React.Component {
 
                         })
                     }
+                    </QueueAnim>
                 </ul>
             </div>
         )

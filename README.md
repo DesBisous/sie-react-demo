@@ -25,6 +25,8 @@
 >
 > redux-saga 异步Action中间件，基于Generator
 > 
+> ant Motion 增加了动画 
+
 
 ## Build Setup
 

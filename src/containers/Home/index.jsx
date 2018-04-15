@@ -11,6 +11,7 @@ import {connect} from "react-redux";
 
 import './style.less'
 import {PullToRefresh} from "antd-mobile";
+import QueueAnim from "rc-queue-anim";
 
 class Home extends React.Component {
     constructor(props, context) {
@@ -20,6 +21,7 @@ class Home extends React.Component {
             refreshing: false,
             hasMore: true,
             height: document.documentElement.clientHeight,
+            show: false
         }
     }
 
@@ -35,6 +37,11 @@ class Home extends React.Component {
     };
 
     componentDidMount() {
+        setTimeout(() => {
+            this.setState({
+                show: true
+            });
+        },200);
         // console.log(this.props);
         this.getLocal();
     }
@@ -85,9 +92,18 @@ class Home extends React.Component {
                     refreshing={this.state.refreshing}
                     onRefresh={this.loadMoreData}
                 >
-                    <Swipe></Swipe>
-                    <Recommend goToCV={this.goToCV.bind(this)}></Recommend>
-                    <Ranking goToCV={this.goToCV.bind(this)}></Ranking>
+                    <QueueAnim className="demo-content"
+                               key="demo"
+                               type={['right', 'left']}
+                               ease={['easeOutQuart', 'easeInOutQuart']}>
+                        {
+                            this.state.show ? [
+                                <Swipe key="swipe'"></Swipe>,
+                                <Recommend key="Recommend'" goToCV={this.goToCV.bind(this)}></Recommend>,
+                                <Ranking key="Ranking'" goToCV={this.goToCV.bind(this)}></Ranking>
+                            ]: null
+                        }
+                    </QueueAnim>
                 </PullToRefresh>
             </div>
         )

@@ -7,6 +7,7 @@ import * as asyncAction from '../../redux/actions/async';
 import Nav from "../../components/Nav/index";
 import MyListView from "../../components/ListView/index";
 import {ListView, PullToRefresh} from 'antd-mobile';
+import QueueAnim from "rc-queue-anim";
 
 class Search extends React.Component {
     constructor(props, context) {
@@ -84,7 +85,11 @@ class Search extends React.Component {
         );
         const row = (rowData, sectionID, rowID) => {
             return (
-                <MyListView key={rowID} item={rowData} goToCV={this.goToCV.bind(this)}></MyListView>
+                <QueueAnim component="ul"
+                           ease={['easeOutQuart', 'easeInOutQuart']}
+                           type={['right', 'left']} leaveReverse>
+                    <MyListView key={rowID} item={rowData} goToCV={this.goToCV.bind(this)}></MyListView>
+                </QueueAnim>
             );
         };
         return (
@@ -95,8 +100,8 @@ class Search extends React.Component {
                     ref={el => this.lv = el}
                     dataSource={this.state.dataSource}
                     renderHeader={() => <span>Pull to refresh</span>}
-                    renderFooter={() => (<div style={{ padding: 0, textAlign: 'center' }}>
-                        {this.state.isLoading ? 'Loading...' : 'Loaded'}
+                    renderFooter={() => (<div style={{ padding: '24px', textAlign: 'center' }}>
+                        {this.state.isLoading ? 'Loading...' : 'Loading...'}
                     </div>)}
                     renderRow={row}
                     renderSeparator={separator}
